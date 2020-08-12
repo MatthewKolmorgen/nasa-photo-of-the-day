@@ -5,6 +5,8 @@ export default function NasaPOD (props) {
     //making my variables to be set later on
 
     //Come back later and swap everything props and only use one useState
+    //Decided against that and to make the page inside of NasaPOD and just pass 
+    // <NasaPOD /> into App.js
     const [img, setImg] = useState ([]);
     const [date, setDate] = useState ([]);
     const [explanation, setExplanation] = useState ([]);
@@ -33,17 +35,24 @@ export default function NasaPOD (props) {
 
     //creating the document
     return (
+        //***** Limit the container size *****
         <div className='container'>
+
+            {/***** Information About the Picture *****/}
             <header>
-                <h1>Title {title}</h1>
+                <h1>{title}</h1>
                 <h2>Date: {date}</h2>
             </header>
-            <section>
+
+            {/***** Main Content *****/}
+            <section className='main-content'>
                 <img src={url} alt='NasaPOD'/>
                 <p>Explanation: {explanation}</p>
             </section>
+            
+            {/***** Footer with Related Links *****/}
             <footer>
-                <nav>
+                <nav className='footer-nav-bar'>
                     <a href='https://twitter.com/NASA'>Nasa Twitter</a>
                     <a href='https://twitter.com/SpaceX'> SpaceX Twitter </a>
                     <a href='https://apod.nasa.gov/apod/astropix.html'>Source</a>
@@ -51,6 +60,4 @@ export default function NasaPOD (props) {
             </footer>
         </div>
     )
-
-
 }
