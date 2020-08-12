@@ -3,6 +3,8 @@ import axios from 'axios'
 
 export default function NasaPOD (props) {
     //making my variables to be set later on
+
+    //Come back later and swap everything props and only use one useState
     const [img, setImg] = useState ([]);
     const [date, setDate] = useState ([]);
     const [explanation, setExplanation] = useState ([]);
@@ -30,6 +32,25 @@ export default function NasaPOD (props) {
     }, []);
 
     //creating the document
+    return (
+        <div className='container'>
+            <header>
+                <h1>Title {title}</h1>
+                <h2>Date: {date}</h2>
+            </header>
+            <section>
+                <img src={url} alt='NasaPOD'/>
+                <p>Explanation: {explanation}</p>
+            </section>
+            <footer>
+                <nav>
+                    <a href='https://twitter.com/NASA'>Nasa Twitter</a>
+                    <a href='https://twitter.com/SpaceX'> SpaceX Twitter </a>
+                    <a href='https://apod.nasa.gov/apod/astropix.html'>Source</a>
+                </nav>
+            </footer>
+        </div>
+    )
 
-    
+
 }
