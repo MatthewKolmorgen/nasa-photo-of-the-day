@@ -1,5 +1,44 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+//importing styled-components
+import styled from 'styled-components'
+
+//styling components
+const StyledDivContainer = styled.div `
+    width: 80%;
+    margin: ${props => props.theme.margin.center};
+`;
+
+const StyledHeader = styled.header`
+    width: 75%;
+    margin: ${props => props.theme.margin.center};
+`
+
+const StyledMainSection = styled.section`
+    width: 70%;
+    margin: ${props => props.theme.margin.center};
+`;
+
+const StyledFooter = styled.footer`
+    /* display: flex; */
+    margin: ${props => props.theme.margin.center};
+`;
+
+const StyledButton = styled.button`
+    justify-content: center;
+    font-size: 2rem;
+    padding: 4rem;
+    margin: ${props => props.theme.margin.center};
+    color: black;
+`;
+
+
+
+
+
+
+
+
 
 export default function NasaPOD (props) {
     //making my variables to be set later on
@@ -25,7 +64,7 @@ export default function NasaPOD (props) {
                 setTitle(response.data.title);
                 setUrl(response.data.url);
             })
-            .catch(err => {
+            .catch(error => {
                 console.log('error')
             })
             .finally (() => {
@@ -36,28 +75,28 @@ export default function NasaPOD (props) {
     //creating the document
     return (
         //***** Limit the container size *****
-        <div className='container'>
+        <StyledDivContainer className='container'>
 
             {/***** Information About the Picture *****/}
-            <header>
+            <StyledHeader>
                 <h1>{title}</h1>
                 <h2>Date: {date}</h2>
-            </header>
+            </StyledHeader>
 
             {/***** Main Content *****/}
-            <section className='main-content'>
+            <StyledMainSection className='main-content'>
                 <img src={url} alt='NasaPOD'/>
                 <p>Explanation: {explanation}</p>
-            </section>
-            
+            </StyledMainSection>
+
             {/***** Footer with Related Links *****/}
-            <footer>
+            <StyledFooter>
                 <nav className='footer-nav-bar'>
-                    <a href='https://twitter.com/NASA'>Nasa Twitter</a>
-                    <a href='https://twitter.com/SpaceX'> SpaceX Twitter </a>
-                    <a href='https://apod.nasa.gov/apod/astropix.html'>Source</a>
+                    <StyledButton as='a' href='https://twitter.com/NASA'>Nasa Twitter</StyledButton>
+                    <StyledButton as='a' href='https://twitter.com/SpaceX'> SpaceX Twitter </StyledButton>
+                    <StyledButton as='a' href='https://apod.nasa.gov/apod/astropix.html'>Source</StyledButton>
                 </nav>
-            </footer>
-        </div>
+            </StyledFooter>
+        </StyledDivContainer>
     )
 }
